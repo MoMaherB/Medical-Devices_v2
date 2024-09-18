@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<section class="covphoto">
+<h1 class="ms-3 mt-5"><span class="badge text-bg-primary" style="--bs-bg-opacity: .45;">Welcome to Our Medical Devices
+		App</span></h1>
+</section>
+
+<div class="bg-light cont p-4">
+	<div class="container bg-light">
+		<a href="{{ url_for('departments') }}" class="text-decoration-none text-dark">
+			<h1 class="text-center mt-4">Departments</h1>
+		</a>
+		<div class="row">
+			<div class="col-md-4">
+				<a href="#" class="text-decoration-none">
+					<div class="card mt-4 shadow-lg mycard-hover">
+						<img src="static/images/1.jpg" class="card-img-top" alt="Image Title">
+						<div class="card-body">
+							<h5 class="card-title text-center">Critical Care</h5>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4">
+				<a href="#" class="text-decoration-none">
+					<div class="card mt-4 shadow-lg mycard-hover">
+						<img src="static/images/2o.jpg" class="card-img-top" alt="Image Title">
+						<div class="card-body">
+							<h5 class="card-title text-center">Operating Room</h5>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4">
+				<a href="#" class="text-decoration-none">
+					<div class="card mt-4 shadow-lg mycard-hover">
+						<img src="static/images/2.png" class="card-img-top" alt="Image Title">
+						<div class="card-body">
+							<h5 class="card-title text-center">Sterilization</h5>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+<br />
+<div class="bg-dark p-4">
+	<div class="container">
+		<br />
+		<a href="#" class="text-decoration-none text-light">
+			<h1 class="text-center mt-4">Products</h1>
+		</a>
+		<div class="row">
+			<div class="col-md-4">
+				<a href="#" class="text-decoration-none">
+					<div class="card mt-4 shadow-lg mycard-hover">
+						<img src="static/images/1.jpg" class="card-img-top" alt="Image Title">
+						<div class="card-body">
+							<h5 class="card-title text-center">Ventilators</h5>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4">
+				<a href="#" class="text-decoration-none">
+					<div class="card mt-4 shadow-lg mycard-hover">
+						<img src="static/images/anrthia.jpg" class="card-img-top" alt="Image Title">
+						<div class="card-body">
+							<h5 class="card-title text-center">Anesthesia</h5>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4">
+				<a href="#" class="text-decoration-none">
+					<div class="card mt-4 shadow-lg mycard-hover">
+						<img src="static/images/light.jpg" class="card-img-top" alt="Image Title">
+						<div class="card-body">
+							<h5 class="card-title text-center">Surgical Light</h5>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock content %}

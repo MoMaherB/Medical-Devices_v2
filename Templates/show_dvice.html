@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-5">
+	<h1 class="text-center">{{ device_to_show.device_name }}</h1>
+	<br>
+	<h2>Description</h2>
+	<br>
+	<p style="font-size=12px;"> {{ device_to_show.description | safe}}</p>
+	<br>
+	<h2 class="text-center">Device Models</h2>
+	{% if device_to_show.models %}
+	<div class="row">
+		{% for model in device_to_show.models %}
+		<div class="col-md-4">
+			<a href="{{ url_for('show_model', id = model.id)}}" class="text-decoration-none">
+				<div class="card mt-4 shadow-lg mycard-hover">
+					<img src="{{url_for('static', filename='images/' + model.image_filename)}}" class="card-img-top" alt="Image Title">
+					<div class="card-body">
+						<h5 class="card-title text-center">{{ model.model_name }}</h5>
+					</div>
+				</div>
+			</a>
+			{% if current_user.is_authenticated %}
+			<a href="{{ url_for('update_model', id = model.id)}}"><button type="button"
+					class="btn btn-outline-warning mt-4">Update</button></a>
+			<a href="{{ url_for('delete_model', id = model.id)}}"><button type="button"
+					class="btn btn-outline-danger mt-4">Delete</button></a>
+			{% endif %}
+		</div>
+		{% endfor %}
+	</div>
+	{% else%}
+	<br>
+	<h2 class="text center">There is no Models to show!</h2>
+	{% endif %}
+	{% if current_user.is_authenticated %}
+	<a href="{{ url_for('add_model', device_id = device_to_show.id ) }}"><button type="button" class="btn btn-info mt-4">Add New
+			Model</button></a>
+	{% endif %}
+</div>
+</div>
+{% endblock content %}

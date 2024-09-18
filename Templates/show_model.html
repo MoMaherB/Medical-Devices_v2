@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container mt-4">
+	<h1 class="text-center">{{ model_to_show.model_name }}</h1>
+	<h5 class="text-center">Device: {{ model_to_show.device.device_name }}</h5>
+	<h5 class="text-center">Department: {{ model_to_show.device.department.department_name }}</h5>
+	<br>
+	<div class="row mt-4">
+		<div class="col-md-6">
+			<p>{{ model_to_show.description | safe }}</p>
+		</div>
+		<div class="col-md-6 text-center">
+			<img src="{{ url_for('static', filename='images/' + model_to_show.image_filename) }}" class="img-fluid"
+				alt="{{ model_to_show.model_name }}">
+		</div>
+	</div>
+</div>
+{% endblock %}

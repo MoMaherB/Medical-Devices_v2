@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-5">
+	<div class="bg-light cont p-4">
+		<div class="container bg-light">
+			<a href="{{ url_for('departments') }}" class="text-decoration-none text-dark">
+				<h1 class="text-center mt-4">Departments</h1>
+			</a>
+			{% if departments %}
+			<div class="row">
+				{% for department in departments%}
+				<div class="col-md-4">
+					<a href="{{ url_for('show_department', id = department.id)}}" class="text-decoration-none">
+						<div class="card mt-4 shadow-lg mycard-hover">
+							<img src="{{url_for('static', filename='images/' + image_filename)}}" class="card-img-top" alt="Image Title">
+							<div class="card-body">
+								<h5 class="card-title text-center">{{ department.department_name }}</h5>
+							</div>
+						</div>
+					</a>
+					{% if current_user.is_authenticated %}
+					<a href="{{ url_for('update_department', id = department.id)}}"><button type="button"
+							class="btn btn-outline-warning mt-4">Update</button></a>
+					<a href="{{ url_for('delete_department', id = department.id)}}"><button type="button"
+							class="btn btn-outline-danger mt-4">Delete</button></a>
+					{% endif %}
+				</div>
+				{% endfor %}
+			</div>
+			{% else%}
+			<br>
+			<h2 class="text center">There is no Departments to show!</h2>
+			{% endif %}
+			{% if current_user.is_authenticated %}
+			<a href="{{ url_for('add_department') }}"><button type="button" class="btn btn-info mt-4">Add New
+					Department</button></a>
+			{% endif %}
+		</div>
+	</div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+{% endblock content %}

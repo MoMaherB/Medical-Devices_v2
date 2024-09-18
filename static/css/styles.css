@@ -1,0 +1,28 @@
+p {
+	font-size: 18px; /* Font size */
+	font-family: 'Arial', sans-serif; /* Font kind (font family) */
+  }
+  
+.mycard-hover {
+	width: 100%;
+}
+
+.mycard-hover {
+	width: 100%;
+	transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+  
+  .mycard-hover:hover {
+	transform: scale(1.04);
+	opacity: 0.9; 
+  }
+
+  .covphoto {
+
+	min-height:75vh;
+	display: flex;
+	align-items: end;
+	background: url(../images/over_view.jpg) no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+}

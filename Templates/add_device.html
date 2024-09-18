@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-5">
+	<div class="row justify-content-center">
+		<div class="col-md-6 col-lg-6">
+			<div class="card shadow p-3	">
+				<div class="card-body">
+					<h2 class="text-center">Add New Device</h2>
+					<br />
+					<form method="POST">
+						{{ form.hidden_tag() }}
+						<div class="form-group mb-3">
+							{{ form.device_name.label(class="form-label") }}
+							{{ form.device_name(class="form-control") }}
+						</div>
+						<br />
+						<div class="form-group mb-3">
+							{{ form.description.label(class="form-label") }}
+							{{ form.description(class="form-control", rows="4") }}
+						</div>
+						<br />
+						<div class="form-group mb-3">
+							<div class="row align-items-center">
+								<div class="col">
+									{{ form.select_department.label(class="form-label") }}
+									{{ form.select_department(class="form-select") }}
+								</div>
+								<div class="col mt-4">
+									<small>Don't find a department belong to Your device?</small>
+								</div>
+								<div class="col-md-3">
+									<a href="{{ url_for('add_department') }}"><button type="button"
+											class="btn btn-info mt-4 btn-sm">Add New Department
+										</button></a>
+								</div>
+
+							</div>
+						</div>
+						<br />
+						<div class="form-group  text-center">
+							{{ form.submit(class="btn btn-primary") }}
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<br />
+<br />
+{% endblock content %}

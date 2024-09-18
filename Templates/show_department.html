@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-5">
+	<h1 class="text-center">{{ department_to_show.department_name }}</h1>
+	<br>
+	<h2>Description</h2>
+	<br>
+	<p style="font-size=12px;"> {{ department_to_show.description | safe }}</p>
+	<br>
+	<h2 class="text-center">Devices</h2>
+	{% if department_to_show.devices %}
+	<div class="row">
+		{% for device in department_to_show.devices %}
+		<div class="col-md-4">
+			<a href="{{ url_for('show_device', id = device.id)}}" class="text-decoration-none">
+				<div class="card mt-4 shadow-lg mycard-hover">
+					<img src="{{url_for('static', filename='images/' + image_filename)}}" class="card-img-top" alt="Image Title">
+					<div class="card-body">
+						<h5 class="card-title text-center">{{ device.device_name }}</h5>
+					</div>
+				</div>
+			</a>
+			{% if current_user.is_authenticated %}
+			<a href="{{ url_for('update_device', id = device.id)}}"><button type="button"
+					class="btn btn-outline-warning mt-4">Update</button></a>
+			<a href="{{ url_for('delete_device', id = device.id)}}"><button type="button"
+					class="btn btn-outline-danger mt-4">Delete</button></a>
+			{% endif %}
+		</div>
+		{% endfor %}
+	</div>
+	{% else%}
+	<br>
+	<h2 class="text center">There is no Devices to show!</h2>
+	{% endif %}
+	{% if current_user.is_authenticated %}
+	<a href="{{ url_for('add_device') }}"><button type="button" class="btn btn-info mt-4">Add New
+			Device</button></a>
+	{% endif %}
+</div>
+</div>
+{% endblock content %}
