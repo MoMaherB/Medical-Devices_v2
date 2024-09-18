@@ -19,7 +19,7 @@ To run the application locally, follow these steps:
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/YOUR_GITHUB_USERNAME/biomedical_app.git
+   git clone https://github.com/MoMaherB/Medical-Devices_v2/
    cd biomedical_app
 
 2. **Set up a virtual environment:**
