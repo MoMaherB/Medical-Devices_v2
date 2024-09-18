@@ -93,3 +93,8 @@ In future iterations, I envision adding features such as:
 - More comprehensive image handling and optimization for faster loading times.
 
 This project not only showcases my technical skills in Flask and Bootstrap but also reflects our journey as a developers, addressing challenges and continuously iterating on the application for improvement.
+
+![Navbar and cover image of the application](relative/path/to/your/screenshot.png)
+![Section of the application](screenshots\Screenshot 2.png)
+![Section 2 of the application](screenshots\Screenshot 3.png)
+![Footer](screenshots\Screenshot 4.png)
