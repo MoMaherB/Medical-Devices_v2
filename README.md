@@ -23,17 +23,21 @@ To run the application locally, follow these steps:
    cd biomedical_app
 
 2. **Set up a virtual environment:**
+	 ```bash
 	python -m venv venv
 	source venv/bin/activate  # On Windows use `venv\Scripts\activate`
 
 
 3. **Install required packages:**
+	 ```bash
 	pip install -r requirements.txt
 
 4. **Set up the database:**
+	 ```bash
 	python3 create_database.py
 
 5. **Set up the database:**
+	 ```bash
 	python3 app.py
 
 
