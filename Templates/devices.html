@@ -10,9 +10,9 @@
 			{% if devices %}
 			<div class="row">
 				{% for device in devices %}
-					{% if device.models %}
-						{% set image_filename = device.models[0].image_filename %}
-					{% endif %}
+				{% if device.models %}
+				{% set image_filename = device.models[0].image_filename %}
+				{% endif %}
 				<div class="col-md-4">
 					<a href="{{ url_for('show_device', id = device.id)}}" class="text-decoration-none">
 						<div class="card mt-4 shadow-lg mycard-hover">
@@ -39,8 +39,8 @@
 			{% if current_user.is_authenticated %}
 			<a href="{{ url_for('add_device') }}"><button type="button" class="btn btn-info mt-4">Add New
 					Device</button></a>
-			{% endif %}
 		</div>
+		{% endif %}
 	</div>
 </div>
 <br />

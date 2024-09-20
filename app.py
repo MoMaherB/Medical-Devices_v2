@@ -116,7 +116,9 @@ class Model(db.Model):
 @app.route('/')
 @app.route('/index')
 def index():
-	return render_template('index.html')
+	departments = Department.query.all()
+	devices = Device.query.all()
+	return render_template('index.html', departments=departments, devices=devices)
 
 
 @app.route('/login', methods=["GET", "POST"])

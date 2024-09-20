@@ -3,8 +3,9 @@
 {% block content %}
 
 <section class="covphoto">
-<h1 class="ms-3 mt-5"><span class="badge text-bg-primary" style="--bs-bg-opacity: .45;">Welcome to Our Medical Devices
-		App</span></h1>
+	<h1 class="ms-3 mt-5"><span class="badge text-bg-primary" style="--bs-bg-opacity: .45;">Welcome to Our Medical
+			Devices
+			App</span></h1>
 </section>
 
 <div class="bg-light cont p-4">
@@ -12,38 +13,41 @@
 		<a href="{{ url_for('departments') }}" class="text-decoration-none text-dark">
 			<h1 class="text-center mt-4">Departments</h1>
 		</a>
+		{% if departments %}
 		<div class="row">
+			{% for department in departments%}
+			{% if department.devices %}
+			{% if department.devices[0].models %}
+			{% set image_filename = department.devices[0].models[0].image_filename %}
+			{% endif %}
+			{% endif %}
 			<div class="col-md-4">
-				<a href="#" class="text-decoration-none">
+				<a href="{{ url_for('show_department', id = department.id)}}" class="text-decoration-none">
 					<div class="card mt-4 shadow-lg mycard-hover">
-						<img src="static/images/1.jpg" class="card-img-top" alt="Image Title">
+						<img src="{{url_for('static', filename='images/' + image_filename)}}" class="card-img-top"
+							alt="Image Title">
 						<div class="card-body">
-							<h5 class="card-title text-center">Critical Care</h5>
+							<h5 class="card-title text-center">{{ department.department_name }}</h5>
 						</div>
 					</div>
 				</a>
+				{% if current_user.is_authenticated %}
+				<a href="{{ url_for('update_department', id = department.id)}}"><button type="button"
+						class="btn btn-outline-warning mt-4">Update</button></a>
+				<a href="{{ url_for('delete_department', id = department.id)}}"><button type="button"
+						class="btn btn-outline-danger mt-4">Delete</button></a>
+				{% endif %}
 			</div>
-			<div class="col-md-4">
-				<a href="#" class="text-decoration-none">
-					<div class="card mt-4 shadow-lg mycard-hover">
-						<img src="static/images/2o.jpg" class="card-img-top" alt="Image Title">
-						<div class="card-body">
-							<h5 class="card-title text-center">Operating Room</h5>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div class="col-md-4">
-				<a href="#" class="text-decoration-none">
-					<div class="card mt-4 shadow-lg mycard-hover">
-						<img src="static/images/2.png" class="card-img-top" alt="Image Title">
-						<div class="card-body">
-							<h5 class="card-title text-center">Sterilization</h5>
-						</div>
-					</div>
-				</a>
-			</div>
+			{% endfor %}
 		</div>
+		{% else%}
+		<br>
+		<h2 class="text center">There is no Departments to show!</h2>
+		{% endif %}
+		{% if current_user.is_authenticated %}
+		<a href="{{ url_for('add_department') }}"><button type="button" class="btn btn-info mt-4">Add New
+				Department</button></a>
+		{% endif %}
 	</div>
 </div>
 <br />
@@ -53,39 +57,41 @@
 		<a href="#" class="text-decoration-none text-light">
 			<h1 class="text-center mt-4">Products</h1>
 		</a>
+		{% if devices %}
 		<div class="row">
+			{% for device in devices %}
+			{% if device.models %}
+			{% set image_filename = device.models[0].image_filename %}
+			{% endif %}
 			<div class="col-md-4">
-				<a href="#" class="text-decoration-none">
+				<a href="{{ url_for('show_device', id = device.id)}}" class="text-decoration-none">
 					<div class="card mt-4 shadow-lg mycard-hover">
-						<img src="static/images/1.jpg" class="card-img-top" alt="Image Title">
+						<img src="{{url_for('static', filename='images/' + image_filename)}}" class="card-img-top"
+							alt="Image Title">
 						<div class="card-body">
-							<h5 class="card-title text-center">Ventilators</h5>
+							<h5 class="card-title text-center">{{ device.device_name }}</h5>
 						</div>
 					</div>
 				</a>
+				{% if current_user.is_authenticated %}
+				<a href="{{ url_for('update_device', id = device.id)}}"><button type="button"
+						class="btn btn-outline-warning mt-4">Update</button></a>
+				<a href="{{ url_for('delete_device', id = device.id)}}"><button type="button"
+						class="btn btn-outline-danger mt-4">Delete</button></a>
+				{% endif %}
 			</div>
-			<div class="col-md-4">
-				<a href="#" class="text-decoration-none">
-					<div class="card mt-4 shadow-lg mycard-hover">
-						<img src="static/images/anrthia.jpg" class="card-img-top" alt="Image Title">
-						<div class="card-body">
-							<h5 class="card-title text-center">Anesthesia</h5>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div class="col-md-4">
-				<a href="#" class="text-decoration-none">
-					<div class="card mt-4 shadow-lg mycard-hover">
-						<img src="static/images/light.jpg" class="card-img-top" alt="Image Title">
-						<div class="card-body">
-							<h5 class="card-title text-center">Surgical Light</h5>
-						</div>
-					</div>
-				</a>
-			</div>
+			{% endfor %}
 		</div>
+		{% else%}
+		<br>
+		<h2 class="text center">There is no Devices to show!</h2>
+		{% endif %}
+		{% if current_user.is_authenticated %}
+		<a href="{{ url_for('add_device') }}"><button type="button" class="btn btn-info mt-4">Add New
+				Device</button></a>
 	</div>
+	{% endif %}
+</div>
 </div>
 
 {% endblock content %}
