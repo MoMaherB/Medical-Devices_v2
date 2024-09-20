@@ -116,9 +116,10 @@ class Model(db.Model):
 @app.route('/')
 @app.route('/index')
 def index():
+	image_filename = 'logo2.png'
 	departments = Department.query.all()
 	devices = Device.query.all()
-	return render_template('index.html', departments=departments, devices=devices)
+	return render_template('index.html', departments=departments, devices=devices, image_filename=image_filename)
 
 
 @app.route('/login', methods=["GET", "POST"])

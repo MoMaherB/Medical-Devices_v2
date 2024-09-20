@@ -5,7 +5,7 @@
 The **Biomedical Company and Devices Application** The website is built using Flask, a lightweight Python web framework, which allows for rapid development and dynamic functionality. We have used Bootstrap 5 for responsive front-end styling, ensuring the design is clean and functional across devices. The site features a dynamic structure that enables admin users to easily add, delete, and update departments, devices, and models, making the platform adaptable for various companies in the medical device industry. This flexibility is key for scaling and managing diverse sets of data. This dynamic functionality provides a flexible solution for companies that need to manage a large array of medical devices and models, offering a personalized interface for each company.
 
 ### Deployed Site
-You can access the deployed site (Not deployed yet).
+You can access the deployed site (Not deployed yet but you can see a demo here: https://youtu.be/7AGQjVDmw7Q).
 
 ### Blog Article
 Read about the journey of creating this project in my [final project blog article](YOUR_BLOG_ARTICLE_LINK).
