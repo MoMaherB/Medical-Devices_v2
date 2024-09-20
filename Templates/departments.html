@@ -10,6 +10,11 @@
 			{% if departments %}
 			<div class="row">
 				{% for department in departments%}
+					{% if department.devices %}
+						{% if department.devices[0].models %}
+							{% set  image_filename = department.devices[0].models[0].image_filename %}
+						{% endif %}
+					{% endif %}
 				<div class="col-md-4">
 					<a href="{{ url_for('show_department', id = department.id)}}" class="text-decoration-none">
 						<div class="card mt-4 shadow-lg mycard-hover">

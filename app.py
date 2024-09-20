@@ -106,7 +106,7 @@ class Model(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	model_name = db.Column(db.String(100), nullable=False)
 	description = db.Column(db.Text, nullable=False)  # New field for model description
-	image_filename = db.Column(db.String(100), nullable=False, default='logo.png')
+	image_filename = db.Column(db.String(100), nullable=False, default='logo2.png')
 	device_id = db.Column(db.Integer, db.ForeignKey('device.id'))
 	
 	def __repr__(self):
@@ -159,12 +159,7 @@ def dashboard():
 @app.route('/departments')
 def departments():
 	departments = Department.query.all()
-	image_filename = 'logo.png'
-	if departments:
-		if departments[0].devices:
-			if departments[0].devices[0].models:
-				image_filename = departments[0].devices[0].models[0].image_filename
-
+	image_filename = 'logo2.png'
 	return render_template("departments.html", departments=departments, image_filename=image_filename)
 
 @app.route('/add_department', methods=["GET", "POST"])
@@ -213,23 +208,14 @@ def show_department(id):
 	department_to_show = Department.query.get_or_404(id)
 	if department_to_show:
 		department_to_show.description = markdown.markdown(department_to_show.description)
-	image_filename = 'logo.png'
-	if department_to_show.devices:
-		if department_to_show.devices[0].models:
-			image_filename = department_to_show.devices[0].models[0].image_filename
-
-
+	image_filename = 'logo2.png'
 	return render_template("show_department.html", department_to_show=department_to_show, image_filename=image_filename)
 
 # --------------All Devices Routes----------------
 @app.route('/devices')
 def devices():
 	devices = Device.query.all()
-	image_filename = 'logo.png'
-	if devices:
-		if devices[0].models:
-			image_filename =devices[0].models[0].image_filename
-
+	image_filename = 'logo2.png'
 	return render_template("devices.html", devices=devices, image_filename=image_filename)
 
 
@@ -292,7 +278,7 @@ def show_device(id):
 def add_model(device_id):
 	form = ModelForm()
 	device_of_model = Device.query.filter_by(id=device_id).first() #retrevie all devices
-	image_filename = 'logo.png'
+	image_filename = 'logo2.png'
 	if form.validate_on_submit():
 		if form.picture_file.data:
 			image_filename = form.picture_file.data.filename

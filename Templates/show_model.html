@@ -7,10 +7,10 @@
 	<h5 class="text-center">Department: {{ model_to_show.device.department.department_name }}</h5>
 	<br>
 	<div class="row mt-4">
-		<div class="col-md-6">
+		<div class="col-md-5">
 			<p>{{ model_to_show.description | safe }}</p>
 		</div>
-		<div class="col-md-6 text-center">
+		<div class="col-md-7 text-center">
 			<img src="{{ url_for('static', filename='images/' + model_to_show.image_filename) }}" class="img-fluid"
 				alt="{{ model_to_show.model_name }}">
 		</div>
